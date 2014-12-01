@@ -932,7 +932,10 @@ public class MPDDatabase {
         List<String> retList = new ArrayList<String>();
         for (String s : responseList) {
             try {
-                retList.add((s.split(":")[1]).trim());
+            	// Below commented and changed by Alan Jordan in order to properly return album names that
+            	// album names that include colons.
+            	//retList.add((s.split(":")[1]).trim());
+            	retList.add(s.substring(s.indexOf(":") + 1).trim());
             } catch (ArrayIndexOutOfBoundsException e) {
                 System.out.println("String with array problem:" + s);
                 retList.add("");
